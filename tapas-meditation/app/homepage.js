@@ -1,14 +1,15 @@
 // app/homepage.js
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { router } from 'expo-router';
 
-export default function Homepage({ navigation }) {
+export default function Homepage() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to My Homepage!</Text>
       <TouchableOpacity 
         style={styles.card}
-        onPress={() => navigation.navigate('Journey')}
+        onPress={() => router.push('/Journey')}
       >
         <Text style={styles.cardTitle}>Panchtantra Stories</Text>
         <Text style={styles.cardSubtitle}>Start your learning journey</Text>
