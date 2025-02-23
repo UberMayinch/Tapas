@@ -1,12 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import BottomTabs from './BottomTabs';
 import { router } from 'expo-router';
+
+// Import local background images
+const panchtantraBg = require('../assets/images/homepage/panchtantra-bg.png');
+const dailyChallengeBg = require('../assets/images/homepage/daily-challenge-bg.png');
+const shlokaBg = require('../assets/images/homepage/shloka-bg.png');
+const recommended1Bg = require('../assets/images/homepage/recommended-1.png');
+const recommended2Bg = require('../assets/images/homepage/recommended-2.png');
+const recommended3Bg = require('../assets/images/homepage/recommended-3.png');
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      {/* Main content in a ScrollView */}
       <ScrollView contentContainerStyle={styles.scrollContent}>
         
         {/* Top section: App name and greeting */}
@@ -18,61 +33,95 @@ const HomeScreen = () => {
         <View style={styles.cardRow}>
           {/* Left card: Continue PanchTantra */}
           <TouchableOpacity 
-            style={styles.card} 
+            style={styles.cardContainer} 
             onPress={() => router.push('/Chapters')}
           >
-            <Image 
-              source={{ uri: 'https://via.placeholder.com/80' }} 
-              style={styles.cardImage} 
-            />
-            <Text style={styles.cardTitle}>Continue</Text>
-            <Text style={styles.cardSubtitle}>PanchTantra</Text>
-            <Text style={styles.cardSubtitle}>Chapter 1</Text>
-            <View style={styles.startButton}>
-              <Text style={styles.startButtonText}>Start</Text>
-            </View>
+            <ImageBackground
+              source={panchtantraBg}
+              style={styles.cardBackground}
+              imageStyle={styles.cardBackgroundImage}
+            >
+              <Text style={styles.cardTitle}>Continue</Text>
+              <Text style={styles.cardSubtitle}>PanchTantra</Text>
+              <Text style={styles.cardSubtitle}>Chapter 1</Text>
+              <View style={styles.startButton}>
+                <Text style={styles.startButtonText}>Start</Text>
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
 
           {/* Right card: Daily Challenge */}
-          <View style={styles.card}>
-            <Image 
-              source={{ uri: 'https://via.placeholder.com/80' }} 
-              style={styles.cardImage} 
-            />
-            <Text style={styles.cardTitle}>Daily Challenge</Text>
-            <Text style={styles.cardSubtitle}>Game</Text>
-            <Text style={styles.cardSubtitle}>2 Rewards</Text>
-            <TouchableOpacity style={styles.startButton}>
-              <Text style={styles.startButtonText}>Start</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.cardContainer}>
+            <ImageBackground
+              source={dailyChallengeBg}
+              style={styles.cardBackground}
+              imageStyle={styles.cardBackgroundImage}
+            >
+              <Text style={styles.cardTitle}>Daily Challenge</Text>
+              <Text style={styles.cardSubtitle}>Game</Text>
+              <Text style={styles.cardSubtitle}>2 Rewards</Text>
+              <View style={styles.startButton}>
+                <Text style={styles.startButtonText}>Start</Text>
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
         </View>
 
         {/* Shloka Practice Card */}
-        <View style={styles.shlokaCard}>
-          <Text style={styles.shlokaTitle}>Shloka Practice</Text>
-          <Text style={styles.shlokaSubtitle}>Meditation - 3-10 MIN</Text>
+        <View style={styles.shlokaCardContainer}>
+          <ImageBackground
+            source={shlokaBg}
+            style={styles.shlokaBackground}
+            imageStyle={styles.shlokaBackgroundImage}
+          >
+            <Text style={styles.shlokaTitle}>Shloka Practice</Text>
+            <Text style={styles.shlokaSubtitle}>Meditation - 3-10 MIN</Text>
+          </ImageBackground>
         </View>
 
         {/* Recommended for you */}
         <Text style={styles.recommendedTitle}>Recommended for you</Text>
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false} 
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
           style={styles.horizontalScroll}
         >
-          <View style={styles.recommendedCard}>
-            <Text style={styles.recommendedCardTitle}>PanchTantra</Text>
-            <Text style={styles.recommendedCardSubtitle}>Meditation - 3-10 min</Text>
+          {/* Recommended Card 1 */}
+          <View style={styles.recommendedCardContainer}>
+            <ImageBackground
+              source={recommended1Bg}
+              style={styles.recommendedBackground}
+              imageStyle={styles.recommendedBackgroundImage}
+            >
+              <Text style={styles.recommendedCardTitle}>PanchTantra</Text>
+              <Text style={styles.recommendedCardSubtitle}>Meditation - 3-10 min</Text>
+            </ImageBackground>
           </View>
-          <View style={styles.recommendedCard}>
-            <Text style={styles.recommendedCardTitle}>Ramayana</Text>
-            <Text style={styles.recommendedCardSubtitle}>Meditation - 3-10 min</Text>
+
+          {/* Recommended Card 2 */}
+          <View style={styles.recommendedCardContainer}>
+            <ImageBackground
+              source={recommended2Bg}
+              style={styles.recommendedBackground}
+              imageStyle={styles.recommendedBackgroundImage}
+            >
+              <Text style={styles.recommendedCardTitle}>Ramayana</Text>
+              <Text style={styles.recommendedCardSubtitle}>Meditation - 3-10 min</Text>
+            </ImageBackground>
           </View>
-          <View style={styles.recommendedCard}>
-            <Text style={styles.recommendedCardTitle}>Mahabharata</Text>
-            <Text style={styles.recommendedCardSubtitle}>Meditation - 3-10 min</Text>
+
+          {/* Recommended Card 3 */}
+          <View style={styles.recommendedCardContainer}>
+            <ImageBackground
+              source={recommended3Bg}
+              style={styles.recommendedBackground}
+              imageStyle={styles.recommendedBackgroundImage}
+            >
+              <Text style={styles.recommendedCardTitle}>Mahabharata</Text>
+              <Text style={styles.recommendedCardSubtitle}>Meditation - 3-10 min</Text>
+            </ImageBackground>
           </View>
+
           {/* Add more horizontal cards as needed */}
         </ScrollView>
       </ScrollView>
@@ -109,32 +158,37 @@ const styles = StyleSheet.create({
     color: '#666',
     marginBottom: 20,
   },
+
+  // Card row
   cardRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
   },
-  card: {
+  cardContainer: {
     width: '48%',
-    backgroundColor: '#F5F5F5',
     borderRadius: 10,
-    padding: 12,
-    alignItems: 'center',
+    overflow: 'hidden',
+    // backgroundColor removed; we now have an ImageBackground
   },
-  cardImage: {
-    width: 80,
-    height: 80,
-    marginBottom: 10,
-    resizeMode: 'contain',
+  cardBackground: {
+    width: '100%',
+    height: 180,
+    justifyContent: 'flex-end',
+    padding: 12,
+  },
+  cardBackgroundImage: {
+    resizeMode: 'cover',
   },
   cardTitle: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#000', // black text on background
     marginBottom: 4,
   },
   cardSubtitle: {
     fontSize: 14,
-    color: '#777',
+    color: '#000',
   },
   startButton: {
     marginTop: 10,
@@ -142,26 +196,40 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 8,
     borderRadius: 5,
+    alignSelf: 'flex-start',
   },
   startButtonText: {
     fontWeight: '600',
     color: '#000',
   },
-  shlokaCard: {
-    backgroundColor: '#EEE',
+
+  // Shloka card
+  shlokaCardContainer: {
     borderRadius: 10,
-    padding: 20,
+    overflow: 'hidden',
     marginBottom: 20,
+  },
+  shlokaBackground: {
+    width: '100%',
+    height: 120,
+    justifyContent: 'flex-end',
+    padding: 20,
+  },
+  shlokaBackgroundImage: {
+    resizeMode: 'cover',
   },
   shlokaTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#FFF',
     marginBottom: 5,
   },
   shlokaSubtitle: {
     fontSize: 14,
-    color: '#666',
+    color: '#EEE',
   },
+
+  // Recommended section
   recommendedTitle: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -170,22 +238,29 @@ const styles = StyleSheet.create({
   horizontalScroll: {
     marginBottom: 20,
   },
-  recommendedCard: {
+  recommendedCardContainer: {
     width: 130,
     height: 100,
-    backgroundColor: '#F6F6F6',
     borderRadius: 10,
-    padding: 10,
+    overflow: 'hidden',
     marginRight: 10,
-    justifyContent: 'center',
+  },
+  recommendedBackground: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    padding: 8,
+  },
+  recommendedBackgroundImage: {
+    resizeMode: 'cover',
   },
   recommendedCardTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    marginBottom: 5,
+    color: '#FFF',
+    marginBottom: 2,
   },
   recommendedCardSubtitle: {
     fontSize: 12,
-    color: '#777',
+    color: '#EEE',
   },
 });
