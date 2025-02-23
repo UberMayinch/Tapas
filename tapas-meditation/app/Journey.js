@@ -59,7 +59,7 @@ export default function JourneyScreen() {
       <BlurView intensity={30} tint="light" style={styles.header}>
         <TouchableOpacity 
           style={styles.backButton}
-          onPress={() => router.back()}
+          onPress={() => router.push('/Chapters')}
         >
           <MaterialIcons name="chevron-left" size={24} color="#000" />
         </TouchableOpacity>
