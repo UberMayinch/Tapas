@@ -1484,6 +1484,18 @@
     find-up "^5.0.0"
     js-yaml "^4.1.0"
 
+"@huggingface/inference@^3.3.6":
+  version "3.3.6"
+  resolved "https://registry.npmjs.org/@huggingface/inference/-/inference-3.3.6.tgz"
+  integrity sha512-KmjUbIiqPEysIEvSJKD2Uw0B+xBbs93Gfq0tTXDOL+7NJW7MBaromk01Mu7ZHzGLxVe/KI3WLcMYPB06nozb3w==
+  dependencies:
+    "@huggingface/tasks" "^0.16.0"
+
+"@huggingface/tasks@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.npmjs.org/@huggingface/tasks/-/tasks-0.16.0.tgz"
+  integrity sha512-aHTxLYJ+aT2QEeZeVMmvtBPtZ9vOnAZRZwN5ZUPHwamzsb6FLcmj45vsB1i5guCvR9TgqBewKazfaO9j3vYmXQ==
+
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz"
@@ -2681,6 +2693,15 @@ available-typed-arrays@^1.0.7:
   integrity sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==
   dependencies:
     possible-typed-array-names "^1.0.0"
+
+axios@^1.7.9:
+  version "1.7.9"
+  resolved "https://registry.npmjs.org/axios/-/axios-1.7.9.tgz"
+  integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
 
 babel-core@^7.0.0-bridge.0:
   version "7.0.0-bridge.0"
@@ -4227,6 +4248,11 @@ flow-parser@0.*:
   version "0.261.2"
   resolved "https://registry.npmjs.org/flow-parser/-/flow-parser-0.261.2.tgz"
   integrity sha512-RtunoakA3YjtpAxPSOBVW6lmP5NYmETwkpAfNkdr8Ovf86ENkbD3mtPWnswFTIUtRvjwv0i8ZSkHK+AzsUg1JA==
+
+follow-redirects@^1.15.6:
+  version "1.15.9"
+  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.9.tgz"
+  integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
 
 fontfaceobserver@^2.1.0:
   version "2.3.0"
@@ -6530,6 +6556,11 @@ prop-types@^15.7.2, prop-types@^15.8.1:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.13.1"
+
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
+  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 psl@^1.1.33:
   version "1.15.0"
