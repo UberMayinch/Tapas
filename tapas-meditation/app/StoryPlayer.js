@@ -58,21 +58,23 @@ export default function StoryPlayer() {
           style={styles.backButton}
           onPress={() => router.back()}
         >
-          <MaterialIcons name="chevron-left" size={24} color="#FFF" />
+          <MaterialIcons name="chevron-left" size={24} color="#000" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>The Clever Crow</Text>
         <View style={styles.headerRight}>
           <TouchableOpacity style={styles.iconButton}>
-            <Ionicons name="heart-outline" size={24} color="#FFF" />
+            <Ionicons name="heart-outline" size={24} color="#000" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
-            <Ionicons name="share-outline" size={24} color="#FFF" />
+            <Ionicons name="share-outline" size={24} color="#000" />
           </TouchableOpacity>
         </View>
       </BlurView>
 
       {/* Main Content Container */}
       <View style={styles.contentContainer}>
+        {/* Video Title */}
+        <Text style={styles.videoTitle}>The Clever Crow - Chapter 1</Text>
+        
         {/* Video Player */}
         <View style={styles.videoContainer}>
           <Video
@@ -90,7 +92,7 @@ export default function StoryPlayer() {
         <View style={styles.controlsContainer}>
           <View style={styles.controls}>
             <TouchableOpacity onPress={() => videoRef.current?.replayAsync()}>
-              <Ionicons name="reload-outline" size={24} color="#FFF" />
+              <Ionicons name="reload-outline" size={24} color="#000" />
             </TouchableOpacity>
             <TouchableOpacity 
               style={styles.playButton}
@@ -103,7 +105,7 @@ export default function StoryPlayer() {
               />
             </TouchableOpacity>
             <TouchableOpacity>
-              <Ionicons name="sync-outline" size={24} color="#FFF" />
+              <Ionicons name="sync-outline" size={24} color="#000" />
             </TouchableOpacity>
           </View>
 
@@ -138,7 +140,7 @@ export default function StoryPlayer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#FFF',
   },
   header: {
     flexDirection: 'row',
@@ -146,12 +148,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingTop: 48,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#FFF',
+    color: '#000',
   },
   headerRight: {
     flexDirection: 'row',
@@ -163,6 +166,13 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     justifyContent: 'space-between',
+  },
+  videoTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#000',
+    paddingHorizontal: 20,
+    marginBottom: 16,
   },
   videoContainer: {
     width: '100%',
@@ -183,14 +193,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 40,
     marginBottom: 20,
+    backgroundColor: '#F8F8F8',
+    padding: 16,
+    borderRadius: 20,
   },
   playButton: {
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: '#F0F0F0',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
   },
   progressContainer: {
     flexDirection: 'row',
@@ -198,7 +213,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   timeText: {
-    color: '#FFF',
+    color: '#000',
     fontSize: 12,
   },
   slider: {
@@ -207,12 +222,12 @@ const styles = StyleSheet.create({
   },
   subtitlesContainer: {
     padding: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
     borderRadius: 12,
   },
   subtitles: {
     textAlign: 'center',
-    color: '#FFF',
+    color: '#000',
     fontSize: 14,
     lineHeight: 20,
   },
