@@ -12,52 +12,13 @@ npm install @expo/vector-icons react-native-svg
 */
 
 // App.js
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
+import { ExpoRoot } from 'expo-router';
+import { registerRootComponent } from 'expo';
 
-const Tab = createBottomTabNavigator();
+export default function App() {
+  return <ExpoRoot />;
+}
 
-const App = () => {
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              switch (route.name) {
-                case 'Home':
-                  iconName = focused ? 'home' : 'home-outline';
-                  break;
-                case 'Sleep':
-                  iconName = focused ? 'moon' : 'moon-outline';
-                  break;
-                case 'Explore':
-                  iconName = focused ? 'compass' : 'compass-outline';
-                  break;
-                case 'Shloka':
-                  iconName = focused ? 'book' : 'book-outline';
-                  break;
-                case 'Profile':
-                  iconName = focused ? 'person' : 'person-outline';
-                  break;
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: '#6B4EFF',
-            tabBarInactiveTintColor: 'gray',
-          })}
-        >
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Sleep" component={SleepScreen} />
-          <Tab.Screen name="Explore" component={ExploreScreen} />
-          <Tab.Screen name="Shloka" component={ShlokaScreen} />
-          <Tab.Screen name="Profile" component={ProfileScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
-};
+registerRootComponent(App);
+
 
