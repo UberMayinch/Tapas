@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { BlurView } from 'expo-blur';
@@ -6,14 +6,53 @@ import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 export default function JourneyScreen() {
   const { storyId } = useLocalSearchParams();
+  const [unlockedChapters, setUnlockedChapters] = useState([1]); // Start with only first chapter unlocked
+
+  useEffect(() => {
+    // Check if StoryPlayer has been visited
+    const checkStoryPlayerVisit = async () => {
+      try {
+        if (storyId === '1') {  // If first chapter was visited
+          setUnlockedChapters(prev => {
+            if (!prev.includes(2)) {
+              return [...prev, 2];
+            }
+            return prev;
+          });
+        }
+      } catch (error) {
+        console.error('Error checking story player visit:', error);
+      }
+    };
+    
+    checkStoryPlayerVisit();
+  }, [storyId]);
 
   const chapters = [
     { id: 1, title: 'START', isActive: true, isLocked: false, icon: 'star' },
-    { id: 2, title: 'Chapter 2', isActive: false, isLocked: true, icon: 'lock' },
-    { id: 3, title: 'Chapter 3', isActive: false, isLocked: true, icon: 'lock' },
-    { id: 4, title: 'Chapter 4', isActive: false, isLocked: true, icon: 'lock' },
-    { id: 5, title: 'Chapter 5', isActive: false, isLocked: true, icon: 'lock' },
+    { id: 2, title: 'Practice', isActive: false, isLocked: !unlockedChapters.includes(2), icon: unlockedChapters.includes(2) ? 'mic' : 'lock' },
+    { id: 3, title: 'Chapter 3', isActive: false, isLocked: !unlockedChapters.includes(3), icon: unlockedChapters.includes(3) ? 'mic' : 'lock' },
+    { id: 4, title: 'Chapter 4', isActive: false, isLocked: !unlockedChapters.includes(4), icon: unlockedChapters.includes(4) ? 'mic' : 'lock' },
+    { id: 5, title: 'Chapter 5', isActive: false, isLocked: !unlockedChapters.includes(5), icon: unlockedChapters.includes(5) ? 'mic' : 'lock' },
   ];
+
+  const handleChapterPress = (chapter) => {
+    if (!chapter.isLocked) {
+      if (chapter.id === 1) {
+        router.push({
+          pathname: '/StoryPlayer',
+          params: { storyId: '1' }
+        });
+      } else if (chapter.id === 2) {
+        router.push('/PracticePage');
+      } else {
+        router.push({
+          pathname: '/StoryPlayer',
+          params: { chapterId: chapter.id }
+        });
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -55,12 +94,12 @@ export default function JourneyScreen() {
                   chapter.isLocked && styles.nodeLocked
                 ]}
                 disabled={chapter.isLocked}
-                onPress={() => router.push('/StoryPlayer')}
+                onPress={() => handleChapterPress(chapter)}
               >
                 <MaterialIcons 
                   name={chapter.icon} 
                   size={24} 
-                  color={chapter.isActive ? '#FFF' : '#666'} 
+                  color={chapter.isLocked ? '#666' : '#000'} 
                 />
               </TouchableOpacity>
             </View>
