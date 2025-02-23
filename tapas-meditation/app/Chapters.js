@@ -12,7 +12,10 @@ export default function ChaptersScreen() {
     <View style={styles.container}>
       {/* Header with back arrow, title, heart icon, etc. */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.headerIconContainer}>
+        <TouchableOpacity 
+          onPress={() => router.push('/homepage')} 
+          style={styles.headerIconContainer}
+        >
           <Ionicons name="arrow-back" size={24} color="#333" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Panchtantra Tales</Text>

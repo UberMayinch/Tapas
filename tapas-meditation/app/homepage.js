@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   scrollContent: {
-    paddingHorizontal: 16,
+    paddingLeft: 16,
+    paddingRight: 4,
     paddingTop: 50,
     paddingBottom: 80, // Leave space for bottom tabs
   },
@@ -164,20 +165,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
+    gap: 1, // Add small gap between cards
   },
   cardContainer: {
-    width: '48%',
+    width: '50%', // Slightly increase width to reduce right gap
     borderRadius: 10,
     overflow: 'hidden',
     // backgroundColor removed; we now have an ImageBackground
   },
   cardBackground: {
     width: '100%',
-    height: 180,
+    height: 220,
     justifyContent: 'flex-end',
     padding: 12,
+    paddingRight: 6,
   },
   cardBackgroundImage: {
+    borderRadius: 10,  // Match container's border radius
     resizeMode: 'cover',
   },
   cardTitle: {
@@ -213,9 +217,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 120,
     justifyContent: 'flex-end',
-    padding: 20,
+    paddingLeft: 15,
+    paddingBottom: 15,
+    
   },
   shlokaBackgroundImage: {
+    borderRadius: 10,
     resizeMode: 'cover',
   },
   shlokaTitle: {
@@ -251,6 +258,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   recommendedBackgroundImage: {
+    borderRadius: 10,
     resizeMode: 'cover',
   },
   recommendedCardTitle: {
