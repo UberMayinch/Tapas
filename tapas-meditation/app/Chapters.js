@@ -1,8 +1,10 @@
 // app/Chapters.js
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // or another icon library
 import { useRouter } from 'expo-router';
+// Import your local image
+import headingBg from '../assets/images/homepage/chapters-bg.png';
 
 export default function ChaptersScreen() {
   const router = useRouter();
@@ -29,9 +31,33 @@ export default function ChaptersScreen() {
         </View>
       </View>
 
+      {/* Image background for Heading Information */}
+      <ImageBackground 
+        source={headingBg} 
+        style={styles.headingImageBackground}
+        imageStyle={styles.headingImage}
+      >
+        <ScrollView contentContainerStyle={styles.headingContentContainer}>
+          <Text style={styles.headingTitle}>Panchtantra Tales</Text>
+          <Text style={styles.headingSubtitle}>STORIES</Text>
+          <Text style={styles.headingDescription}>
+            Enjoy timeless fables filled with wit, wisdom, and talking animals!
+          </Text>
+          <View style={styles.statsRow}>
+            <View style={styles.statItem}>
+              <Ionicons name="heart" size={18} color="#F55" style={{ marginRight: 5 }} />
+              <Text style={styles.statText}>24,234 Favorites</Text>
+            </View>
+            <View style={styles.statItem}>
+              <Ionicons name="headset-outline" size={18} color="#555" style={{ marginRight: 5 }} />
+              <Text style={styles.statText}>34,234 Listening</Text>
+            </View>
+          </View>
+        </ScrollView>
+      </ImageBackground>
+
       {/* Main banner / info */}
       <View style={styles.bannerContainer}>
-        {/* Example "sun" or decorative image */}
         <Image
           source={{ uri: 'https://via.placeholder.com/150' }}
           style={styles.bannerImage}
@@ -42,7 +68,6 @@ export default function ChaptersScreen() {
           <Text style={styles.bannerDescription}>
             Enjoy timeless fables filled with wit, wisdom, and talking animals!
           </Text>
-          {/* Stats row: favorites, listening */}
           <View style={styles.statsRow}>
             <View style={styles.statItem}>
               <Ionicons name="heart" size={18} color="#F55" style={{ marginRight: 5 }} />
@@ -168,6 +193,42 @@ const styles = StyleSheet.create({
   headerRightIcons: {
     flexDirection: 'row',
   },
+  headingImageBackground: {
+    marginHorizontal: 16,
+    marginVertical: 10,
+    borderRadius: 10,
+    overflow: 'hidden',
+    height: 200,
+    justifyContent: 'center',
+  },
+  headingImage: {
+    resizeMode: 'cover',
+  },
+  headingContentContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  headingTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFF',
+    marginBottom: 4,
+  },
+  headingSubtitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#6B4EFF',
+    marginBottom: 8,
+  },
+  headingDescription: {
+    fontSize: 14,
+    color: '#CCC',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
   bannerContainer: {
     flexDirection: 'row',
     paddingHorizontal: 16,
@@ -276,3 +337,5 @@ const styles = StyleSheet.create({
     color: '#999',
   },
 });
+
+export { ChaptersScreen };
