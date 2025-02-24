@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "tapas-meditation",
-    "slug": "tapas-meditation",
+    "slug": "tapas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -37,6 +37,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "cbb5dc6a-ffb4-46ce-ac85-77aab90642f6"
+      }
+    },
+    "owner": "ubermayinch"
   }
 }
