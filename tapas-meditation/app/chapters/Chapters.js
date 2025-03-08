@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity, Scrol
 import { Ionicons } from '@expo/vector-icons'; // or another icon library
 import { useRouter } from 'expo-router';
 // Import your local image
-import headingBg from '../assets/images/homepage/chapters-bg.png';
+import headingBg from '../../assets/images/homepage/chapters-bg.png';
 
 export default function ChaptersScreen() {
   const router = useRouter();

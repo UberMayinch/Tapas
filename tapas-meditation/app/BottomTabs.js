@@ -42,7 +42,7 @@ const BottomTabs = () => {
 
       <TouchableOpacity 
         style={styles.tabItem} 
-        onPress={() => router.push('/tanish')}
+        onPress={() => router.push('/Parent/parent')}
       >
         <Ionicons name="person-outline" size={24} color="#000" />
         <Text style={styles.tabLabel}>Tanish</Text>

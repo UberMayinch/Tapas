@@ -34,7 +34,7 @@ const HomeScreen = () => {
           {/* Left card: Continue PanchTantra */}
           <TouchableOpacity 
             style={styles.cardContainer} 
-            onPress={() => router.push('/Chapters')}
+            onPress={() => router.push('chapters/Chapters')}
           >
             <ImageBackground
               source={panchtantraBg}
