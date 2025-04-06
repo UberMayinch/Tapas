@@ -28,17 +28,22 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-<Stack screenOptions={{ headerShown: false }}>
-  <Stack.Screen name="(tabs)" />
-  <Stack.Screen name="Journey" />
-  <Stack.Screen name="StoryPlayer" />
-  <Stack.Screen name="PracticePage" />
-  <Stack.Screen name="AdvancedPracticePage" />
-  <Stack.Screen name="Parent/parent" />
-  <Stack.Screen name="+not-found" />
-</Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="login" />
+          <Stack.Screen name="register" />
+          <Stack.Screen name="profile" />
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="homepage" />
+          <Stack.Screen name="Journey" />
+          <Stack.Screen name="StoryPlayer" />
+          <Stack.Screen name="PracticePage" />
+          <Stack.Screen name="AdvancedPracticePage" />
+          <Stack.Screen name="Parent/parent" />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+      </ThemeProvider>
   );
 }
