@@ -19,4 +19,5 @@ export const AcceptedProvider = ({ children }) => {
   );
 };
 
+
 export const useAccepted = () => useContext(AcceptedContext);

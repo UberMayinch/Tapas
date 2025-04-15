@@ -26,9 +26,9 @@ const BottomTabs = () => {
 
       <TouchableOpacity 
         style={styles.tabItem} 
-        onPress={() => router.push('/ExploreScreen')}
+        onPress={() => router.push('/ParentScreen')}
       >
-        <Ionicons name="search-outline" size={24} color="#000" />
+        <Ionicons name="share-outline" size={24} color="#000" />
         <Text style={styles.tabLabel}>Explore</Text>
       </TouchableOpacity>
 
