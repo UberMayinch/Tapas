@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import BottomTabs from './BottomTabs';
 import { router } from 'expo-router';
+import { useAccepted } from './AcceptedContext';
 
 // Import local background images
 const panchtantraBg = require('../assets/images/homepage/panchtantra-bg.png');
@@ -20,6 +21,9 @@ const recommended2Bg = require('../assets/images/homepage/recommended-2.png');
 const recommended3Bg = require('../assets/images/homepage/recommended-3.png');
 
 const HomeScreen = () => {
+  const { acceptedComponents } = useAccepted();
+  const bothAccepted = acceptedComponents.video && acceptedComponents.chanting;
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -86,6 +90,9 @@ const HomeScreen = () => {
           showsHorizontalScrollIndicator={false}
           style={styles.horizontalScroll}
         >
+
+
+          
           {/* Recommended Card 1 */}
           <View style={styles.recommendedCardContainer}>
             <ImageBackground
@@ -124,6 +131,45 @@ const HomeScreen = () => {
 
           {/* Add more horizontal cards as needed */}
         </ScrollView>
+
+        {bothAccepted && (
+  <>
+    <Text style={styles.recommendedTitle}>Created for you</Text>
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      style={styles.horizontalScroll}
+    >
+      {/* Created for you Card 1 */}
+      <View style={styles.recommendedCardContainer}>
+        <ImageBackground
+          source={recommended1Bg}
+          style={styles.recommendedBackground}
+          imageStyle={styles.recommendedBackgroundImage}
+        >
+          <Text style={styles.recommendedCardTitle}>Video Material</Text>
+          <Text style={styles.recommendedCardSubtitle}>Learn by Watching</Text>
+        </ImageBackground>
+      </View>
+
+      {/* Created for you Card 2 */}
+      <View style={styles.recommendedCardContainer}>
+        <ImageBackground
+          source={recommended2Bg}
+          style={styles.recommendedBackground}
+          imageStyle={styles.recommendedBackgroundImage}
+        >
+          <Text style={styles.recommendedCardTitle}>Chanting Practice</Text>
+          <Text style={styles.recommendedCardSubtitle}>Daily Mantras</Text>
+        </ImageBackground>
+      </View>
+
+      {/* Add more cards if needed */}
+    </ScrollView>
+  </>
+)}
+
+
       </ScrollView>
 
       {/* Bottom Tabs (reusable component) */}

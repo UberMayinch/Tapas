@@ -20,8 +20,8 @@ const BottomTabs = () => {
         style={styles.tabItem} 
         onPress={() => router.push('/GuruScreen')}
       >
-        <Ionicons name="bed-outline" size={24} color="#000" />
-        <Text style={styles.tabLabel}>Sleep</Text>
+        <Ionicons name="add-outline" size={24} color="#000" />
+        <Text style={styles.tabLabel}>Create</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 

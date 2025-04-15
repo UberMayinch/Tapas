@@ -12,6 +12,7 @@ import {
   Alert
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Stack, useRouter } from 'expo-router';
 
 // Example local image for the "Guru" illustration:
 const guruImage = require('../assets/images/homepage/daily-challenge-bg.png');
@@ -28,7 +29,7 @@ export default function GuruScreen() {
   ]);
   const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
-  
+  const router = useRouter();
   // New state variables for story functionality
   const [storyDescriptions, setStoryDescriptions] = useState([]);
   const [selectedStory, setSelectedStory] = useState(null);
@@ -446,61 +447,82 @@ export default function GuruScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Back arrow (optional) */}
-      <TouchableOpacity style={styles.backButton}>
-        <Ionicons name="arrow-back" size={24} color="#fff" />
-      </TouchableOpacity>
-
-      {/* Title */}
-      <Text style={styles.title}>GURU PAL</Text>
-
-      {/* Guru image */}
-      <View style={styles.guruImageContainer}>
-        <Image source={guruImage} style={styles.guruImage} />
-      </View>
-
-      {/* Scrollable conversation window */}
-      <ScrollView 
-        style={styles.chatContainer}
-        contentContainerStyle={styles.chatContent}
-        ref={scrollViewRef}
-      >
-        {renderConversation()}
-        {!showingJourney && (
-          <>
-            {renderStoryOptions()}
-            {renderStoryActionButtons()}
-          </>
-        )}
-        {loading && <Text style={styles.chatText}>Thinking...</Text>}
-      </ScrollView>
-
-      {/* Input row */}
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={styles.inputContainer}
-      >
-        <TouchableOpacity style={styles.micButton}>
-          <Ionicons name="mic-outline" size={24} color="#fff" />
+    <>
+      {/* Header config */}
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <TouchableOpacity onPress={() => router.push('/yourTargetScreen')}>
+              <Text style={{ marginRight: 15, color: '#007AFF', fontSize: 16 }}>Done</Text>
+            </TouchableOpacity>
+          ),
+          title: 'Guru Screen',
+        }}
+      />
+  
+      {/* Main UI */}
+      <View style={styles.container}>
+        {/* Back arrow */}
+        <TouchableOpacity style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
-        <TextInput
-          style={styles.input}
-          placeholder={conversation[conversation.length - 1]?.isExercise ? "Type your response..." : "Ask me anything..."}
-          placeholderTextColor="#999"
-          value={inputText}
-          onChangeText={setInputText}
-        />
-        <TouchableOpacity 
-          style={styles.sendButton} 
-          onPress={handleSendMessage}
-          disabled={loading}
+  
+        {/* Title */}
+        <Text style={styles.title}>GURU PAL</Text>
+  
+        {/* Guru image */}
+        <View style={styles.guruImageContainer}>
+          <Image source={guruImage} style={styles.guruImage} />
+        </View>
+        <TouchableOpacity onPress={() => router.push('/Validate')}>
+              <Text style={{ marginRight: 15, color: '#007AFF', fontSize: 16 }}>Done</Text>
+            </TouchableOpacity>
+  
+        {/* Chat */}
+        <ScrollView 
+          style={styles.chatContainer}
+          contentContainerStyle={styles.chatContent}
+          ref={scrollViewRef}
         >
-          <Ionicons name="send" size={20} color="#fff" />
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
-    </View>
+          {renderConversation()}
+          {!showingJourney && (
+            <>
+              {renderStoryOptions()}
+              {renderStoryActionButtons()}
+            </>
+          )}
+          {loading && <Text style={styles.chatText}>Thinking...</Text>}
+        </ScrollView>
+  
+        {/* Input row */}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={styles.inputContainer}
+        >
+          <TouchableOpacity style={styles.micButton}>
+            <Ionicons name="mic-outline" size={24} color="#fff" />
+          </TouchableOpacity>
+          <TextInput
+            style={styles.input}
+            placeholder={conversation[conversation.length - 1]?.isExercise ? "Type your response..." : "Ask me anything..."}
+            placeholderTextColor="#999"
+            value={inputText}
+            onChangeText={setInputText}
+          />
+          <TouchableOpacity 
+            style={styles.sendButton} 
+            onPress={handleSendMessage}
+            disabled={loading}
+          >
+
+          
+            <Ionicons name="send" size={20} color="#fff" />
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      </View>
+    </>
   );
+  
 }
 
 const styles = StyleSheet.create({
